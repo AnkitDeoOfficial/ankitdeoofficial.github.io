@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ankit Deo | Computer Engineer, Developer, Creator</title>
+<meta name="description" content="Portfolio of Ankit Deo, a Computer Engineering student from Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--bg:#050a1a;--tx:#fff;--mu:#8fa3c8;--cy:#22b8f0;--bl:#3a8bff;--ln:rgba(70,110,255,.28);--cd:linear-gradient(160deg,rgba(18,30,66,.75),rgba(8,14,34,.88))}
+:root.light{--bg:#eef3ff;--tx:#0a1330;--mu:#4a5b80;--ln:rgba(60,100,220,.3);--cd:linear-gradient(160deg,#fff,#eaf0ff)}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--cy);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+header{position:sticky;top:0;z-index:20;background:rgba(5,10,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(70,110,255,.12)}
+:root.light header{background:rgba(238,243,255,.9)}
+.nav{display:flex;align-items:center;height:64px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px}
+.logo{font-weight:800;font-size:26px;font-style:italic;background:linear-gradient(90deg,#8b5cf6,#3a8bff,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-2px}
+.links{display:flex;gap:34px;margin:0 auto;font-size:13px}
+.links a{padding:20px 0;color:var(--mu);border-bottom:2px solid transparent;transition:.2s}
+.links a:hover{color:var(--tx)}.links a.on{color:var(--cy);border-color:var(--cy)}
+.ib{width:36px;height:36px;border-radius:50%;border:1px solid var(--ln);background:rgba(20,35,80,.5);display:grid;place-items:center;font-size:16px}
+#mb{display:none}
+.hero{background:radial-gradient(60% 80% at 75% 40%,rgba(70,60,220,.35),transparent 70%),radial-gradient(40% 60% at 10% 20%,rgba(20,90,220,.2),transparent 70%)}
+.hg{display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:20px;padding-top:36px;padding-bottom:20px}
+.hello{display:inline-block;padding:3px 16px;border-radius:99px;background:rgba(40,110,255,.18);border:1px solid var(--ln);color:var(--cy);font-size:14px}
+.kick{margin:14px 0 4px;letter-spacing:.35em;font-size:10px;color:var(--bl)}
+h1{font-size:clamp(46px,7vw,68px);font-weight:800;line-height:1.05;letter-spacing:-1.5px}
+h1 b{background:linear-gradient(90deg,#3a8bff,#6d5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h2{font-size:clamp(17px,2.2vw,20px);font-weight:600;margin:10px 0 14px}
+.hero p{color:#2fa0ff;max-width:400px;font-size:14px}
+.btns{display:flex;gap:14px;margin:26px 0 24px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:99px;font-size:13px;font-weight:500;border:1px solid var(--bl);transition:.2s}
+.btn.p{background:linear-gradient(90deg,#1f6bff,#2fa5ff);border-color:transparent;box-shadow:0 0 24px rgba(40,120,255,.5)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(58,139,255,.55)}
+.soc{display:flex;gap:26px;font-size:22px;color:var(--mu)}.soc a:hover{color:var(--cy)}
+.himg{width:100%;display:block;-webkit-mask-image:radial-gradient(ellipse at 55% 50%,#000 58%,transparent 80%);mask-image:radial-gradient(ellipse at 55% 50%,#000 58%,transparent 80%);animation:fl 7s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-8px)}}
+section{border-top:1px solid rgba(70,110,255,.15)}.pad{padding:44px 0}
+.lab{color:var(--cy);font-size:13px;margin-bottom:8px}
+h3{font-size:26px;font-weight:700;line-height:1.25}
+.card{background:var(--cd);border:1px solid var(--ln);border-radius:14px}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.abg{display:grid;grid-template-columns:190px 1fr;gap:26px}
+.abg img{width:100%;border-radius:20px;border:1px solid var(--ln);box-shadow:0 0 30px rgba(80,90,255,.35)}
+.abg p,.gh p{color:var(--mu);font-size:13px;margin:12px 0 16px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.chip{display:flex;align-items:center;gap:8px;padding:8px 12px;font-size:10px;color:var(--mu);line-height:1.2}
+.chip svg{font-size:16px;color:var(--cy)}
+.btn.o{padding:9px 20px;font-size:11px;color:var(--cy);background:transparent}
+.sk{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.sk .card{padding:12px}
+.sk h4{font-size:11px;font-weight:500;color:var(--mu);margin-bottom:10px}
+.ti{display:flex;justify-content:space-around;gap:4px}
+.ti div{text-align:center;font-size:9px;color:var(--mu)}
+.ti img{width:26px;height:26px;display:block;margin:0 auto 5px}.ti img.inv{filter:invert(1)}
+:root.light .ti img.inv{filter:none}
+.ph{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;gap:16px;flex-wrap:wrap}
+.ph p{color:var(--mu);font-size:13px}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.pc{overflow:hidden;transition:.25s}.pc:hover{transform:translateY(-4px);border-color:var(--bl);box-shadow:0 0 26px rgba(58,139,255,.3)}
+.th{height:100px;background:linear-gradient(135deg,#1a2f8f,#5b3fd0);display:grid;place-items:center;font-size:30px}
+.th img{width:100%;height:100%;object-fit:cover}
+.pb{padding:14px}.pt{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14px}
+.go{width:24px;height:24px;border-radius:50%;border:1px solid var(--ln);display:grid;place-items:center;font-size:12px}
+.tg{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tg span{font-size:9px;padding:3px 9px;border-radius:5px;background:rgba(40,80,200,.25);color:var(--mu)}
+.pb p{font-size:11px;color:var(--mu);min-height:48px}
+.empty{grid-column:1/-1;text-align:center;color:var(--mu);padding:36px;font-size:14px}
+.g3{display:grid;grid-template-columns:.9fr 1.5fr 1.05fr 1.05fr;gap:14px;margin-top:6px}
+.gh{padding-right:6px}.g3 .card{padding:16px;font-size:11px}
+.pf{display:flex;gap:12px;align-items:center;font-size:12px}.pf img{width:34px;height:34px;border-radius:50%}
+.pf small,.rp small,.ac small{color:var(--mu);display:block;font-size:10px}
+.st{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:16px 0 14px;color:var(--mu);font-size:9px}.st b{display:block;color:var(--tx);font-size:16px;font-weight:500}
+#cg{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;margin:8px 0}
+#cg i{aspect-ratio:1;background:#12224f;border-radius:1px}#cg .l1{background:#1b3f9a}#cg .l2{background:#2d63d8}#cg .l3{background:#3a8bff}#cg .l4{background:#22d3ee}
+.g3 h5{font-size:12px;font-weight:500;margin-bottom:10px;display:flex;justify-content:space-between}.g3 h5 a{color:var(--cy);font-size:10px}
+.ac{display:flex;gap:10px;margin-bottom:10px}.ac div:first-child,.rp div:first-child{flex:none;width:28px;height:28px;border-radius:50%;background:rgba(80,120,255,.2);display:grid;place-items:center;color:var(--cy)}
+.ac b,.rp b{font-weight:500;font-size:11px;display:block}
+.rp{display:flex;gap:10px;align-items:center;margin-bottom:12px}.rp>div:nth-child(2){flex:1}.rp div:first-child{border-radius:8px;width:38px;height:38px}
+.strip{display:grid;grid-template-columns:1fr 1.15fr;margin-top:14px;padding:20px 26px;align-items:center;gap:20px}
+.strip q{font-style:italic;font-size:14px;display:block}.strip small{color:var(--mu);font-size:11px}
+.ci{display:flex;align-items:center;gap:22px;flex-wrap:wrap;font-size:11px}.ci>div{display:flex;gap:10px;align-items:center}
+.ci .bx{width:40px;height:40px;border-radius:9px;border:1px solid var(--ln);display:grid;place-items:center;font-size:18px;color:var(--cy)}
+.ci small{color:var(--mu);display:block}.ci .soc{font-size:18px;gap:16px;margin-left:auto}
+.cg{display:grid;grid-template-columns:1fr 1.25fr;gap:40px;align-items:start}
+.cg p{color:var(--mu);font-size:13px;margin-top:8px}.cg img{width:210px;margin-top:20px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fl{display:block;padding:9px 14px;font-size:10px;color:var(--mu)}.fl.w{grid-column:1/-1}
+.fl input,.fl textarea{width:100%;background:none;border:0;color:var(--tx);font:inherit;font-size:12px;margin-top:2px;outline:0;resize:none}
+.fl:focus-within{border-color:var(--cy);box-shadow:0 0 16px rgba(34,184,240,.3)}
+.fa{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px}
+#note{font-size:12px}
+footer{border-top:1px solid rgba(70,110,255,.15);padding:22px 0;font-size:11px;color:var(--mu)}
+.fw{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.fw .brand{color:var(--tx);font-size:15px}
+dialog{width:min(760px,94vw);max-height:90vh;background:#081130;color:#fff;border:1px solid var(--ln);border-radius:16px;padding:22px;overflow:auto}
+dialog::backdrop{background:rgba(2,5,15,.75)}
+dialog h3{font-size:20px;display:flex;justify-content:space-between;align-items:center}
+dialog h4{margin:18px 0 8px;font-size:13px;color:var(--cy)}
+dialog form{grid-template-columns:1fr}
+dialog input,dialog textarea{width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--ln);background:#0c1a45;color:#fff;font:inherit;font-size:13px}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--ln);font-size:13px}
+.row small{color:var(--mu);display:block}.row div:last-child{display:flex;gap:6px;flex:none}
+.sm{padding:5px 12px;border-radius:7px;border:1px solid var(--ln);background:none;font-size:11px}.sm.d{color:#ff7a8a}
+.rv{opacity:0;transform:translateY(14px);transition:.6s}.rv.in{opacity:1;transform:none}
+@media(max-width:920px){.links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);padding:8px 28px 16px;border-bottom:1px solid var(--ln)}.links.open{display:flex}.links a{padding:12px 0}#mb{display:grid;margin-left:auto}.nav{gap:12px}
+.hg,.ab,.cg,.strip{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}.ci .soc{margin-left:0}}
+@media(max-width:560px){.abg{grid-template-columns:1fr}.abg img{max-width:220px}.g3,.sk,form{grid-template-columns:1fr}.wrap{padding:0 18px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="gh" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></symbol>
+<symbol id="li" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></symbol>
+<symbol id="ml" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+<symbol id="ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4a4 4 0 1 1-7.9 1.2 4 4 0 0 1 7.9-1.2zM17.5 6.5h0"/></symbol>
+<symbol id="ar" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="cap" viewBox="0 0 24 24"><path d="m22 10-10-5L2 10l10 5zM6 12v5c3 2 9 2 12 0v-5"/></symbol>
+<symbol id="bag" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V4h8v3"/></symbol>
+<symbol id="st" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7L18.5 22 12 18l-6.5 4 1.8-7.7L2 9.6 9 9z"/></symbol>
+<symbol id="mo" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
+</defs></svg>
+
+<header><div class="wrap nav">
+<a class="brand" href="#home"><span class="logo">AD</span>Ankit Deo</a>
+<nav class="links" id="nl" aria-label="Main"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#github">GitHub</a><a href="#contact">Contact</a></nav>
+<button class="ib" id="th" aria-label="Toggle dark and light theme"><svg class="i"><use href="#mo"/></svg></button>
+<button class="ib" id="mb" aria-label="Open menu" aria-expanded="false">☰</button>
+</div></header>
+
+<main>
+<section id="home" class="hero" style="border:0"><div class="wrap hg">
+<div><span class="hello">Hello, I'm 👋</span><div class="kick">DEVELOPER / CREATOR</div><h1>Ankit <b>Deo</b></h1>
+<h2>Computer Engineer &nbsp;|&nbsp; Developer &nbsp;|&nbsp; Creator</h2>
+<p>I build digital experiences, explore technology, and turn ideas into useful projects. I love learning, building, and creating solutions that make a difference.</p>
+<div class="btns"><a class="btn p" href="#projects">View My Projects <svg class="i"><use href="#ar"/></svg></a><a class="btn" href="#contact">Get In Touch</a></div>
+<div class="soc" id="s1"></div></div>
+<img class="himg" src="assets/hero.png" alt="Developer workstation with laptop, phone, plant, books, Linux mascot and coding mug">
+</div></section>
+
+<div class="wrap pad ab rv">
+<div id="about" class="abg"><img src="assets/about.png" alt="Ankit Deo illustration">
+<div><div class="lab">01 — About Me</div><h3>The person behind<br>the code.</h3>
+<p>I'm Ankit Deo, a Computer Engineering student with a strong interest in programming, AI, and building useful applications. I enjoy learning new technologies, solving problems and creating projects that make a difference.</p>
+<div class="chips"><div class="card chip"><svg class="i"><use href="#pin"/></svg>Nepal</div><div class="card chip"><svg class="i"><use href="#cap"/></svg>Computer Engineering<br>(Bachelor's)</div><div class="card chip"><svg class="i"><use href="#bag"/></svg>Open to<br>Opportunities</div></div>
+<a class="btn o" href="https://linkedin.com/in/ankitdeoofficial/" target="_blank" rel="noopener">More About Me <svg class="i"><use href="#ar"/></svg></a></div></div>
+<div id="skills"><div class="lab">02 — Skills &amp; Technologies</div><h3 style="font-size:15px;font-weight:500">Tools of the game.</h3><div class="sk" id="skg"></div></div>
+</div>
+
+<section id="projects"><div class="wrap pad rv">
+<div class="ph"><div><div class="lab" style="font-size:15px;color:var(--tx)"><span style="color:var(--cy)">03</span> — &nbsp;My Projects</div><p>Some of the apps and systems I've worked on.</p></div>
+<a class="btn o" href="#pg">View All Projects <svg class="i"><use href="#ar"/></svg></a></div>
+<div class="pg" id="pg"></div></div></section>
+
+<section id="github"><div class="wrap pad rv">
+<div class="g3"><div class="gh"><div class="lab">04 — GitHub &amp; Achievements</div><h3>Open Source &amp; Growth</h3><p>I love contributing to open source, learning from the community and solving real-world problems.</p>
+<a class="btn o" href="https://github.com/AnkitDeoOfficial" target="_blank" rel="noopener">Visit My GitHub <svg class="i"><use href="#ar"/></svg></a></div>
+<div class="card"><div class="pf"><img id="av" alt="" src="https://github.com/AnkitDeoOfficial.png"><div>AnkitDeoOfficial<small><span id="fo">–</span> followers · <span id="fg">–</span> following</small></div></div>
+<div class="st"><div>Total Repos<b id="tr">–</b></div><div>Public Repos<b id="pr">–</b></div><div>PRs<b id="pp">–</b></div><div>Contributions<b id="cc">–</b></div></div>
+<div style="color:var(--mu)">Contribution activity</div><div id="cg" aria-label="Contribution graph"></div></div>
+<div class="card"><h5>Achievements</h5>
+<div class="ac"><div><svg class="i"><use href="#st"/></svg></div><div><b>Core Contributor</b><small>Consistent code contributions and documentation.</small></div></div>
+<div class="ac"><div><svg class="i"><use href="#st"/></svg></div><div><b>Problem Solver</b><small>Solved 100+ coding challenges across platforms.</small></div></div>
+<div class="ac"><div><svg class="i"><use href="#cap"/></svg></div><div><b>Academic Excellence</b><small>Maintaining high standards in Computer Engineering.</small></div></div>
+<div class="ac"><div><svg class="i"><use href="#st"/></svg></div><div><b>Innovation Enthusiast</b><small>Exploring AI integration with software engineering.</small></div></div></div>
+<div class="card"><h5>Top Repositories <a href="https://github.com/AnkitDeoOfficial?tab=repositories" target="_blank" rel="noopener">View all</a></h5><div id="rl"></div></div></div>
+<div class="card strip"><div><q>“Build, learn, improve.”</q><small>Small steps every day lead to big results.</small><div style="text-align:right;font-style:italic;font-size:11px">— Ankit Deo</div></div>
+<div class="ci"><div><span class="bx"><svg class="i"><use href="#ml"/></svg></span><span>ankitdev880@gmail.com<small>Email</small></span></div><div><span class="bx"><svg class="i"><use href="#pin"/></svg></span><span>Nepal<small>Location</small></span></div><div class="soc" id="s2"></div></div></div>
+</div></section>
+
+<section id="contact"><div class="wrap pad cg rv">
+<div><div class="lab">05 — Contact</div><h3>Let's build something great.</h3><p>Have an idea, project or opportunity? I'd love to hear about it.</p><img src="assets/contact.png" alt=""></div>
+<form id="cf" novalidate autocomplete="off">
+<label class="card fl">Name<input name="name" placeholder="Your name"></label>
+<label class="card fl">Email<input name="email" type="email" placeholder="your@email.com"></label>
+<label class="card fl w">Message<textarea name="message" rows="3" placeholder="Your message..."></textarea></label>
+<div class="fa"><span id="note" role="status"></span><button class="btn p" id="sb" type="submit" style="border:0">Send Message <svg class="i"><use href="#ar"/></svg></button></div>
+</form></div></section>
+</main>
+
+<footer><div class="wrap fw"><a class="brand" href="#home"><span class="logo">AD</span>Ankit Deo</a><span>© 2026 Ankit Deo. Built with curiosity.</span><a href="#home">Back to top ↑</a></div></footer>
+
+<dialog id="adm"><h3>Manage portfolio <span><button class="sm" id="lo">Log out</button> <button class="sm" id="xx">Close</button></span></h3>
+<h4 id="ft">Add project</h4>
+<form id="pf2"><input name="title" placeholder="Title" required><textarea name="description" rows="2" placeholder="Short description"></textarea><input name="tags" placeholder="Tags, separated by commas"><input name="image_url" placeholder="Image URL (optional)"><input name="link_url" placeholder="Project link (optional)">
+<div><button class="btn p" style="border:0" type="submit">Save project</button> <button class="sm" type="button" id="cl">Clear</button></div></form>
+<h4>Projects</h4><div id="al"></div><h4>Messages</h4><div id="ml2"></div></dialog>
+
+<script>
+/* ===== Supabase connection: paste your two values here (see README) ===== */
+const CFG={url:"",key:"",admin:"ankitdev880@gmail.com"};
+const sb=CFG.url&&CFG.key&&window.supabase?supabase.createClient(CFG.url,CFG.key):null;
+const $=s=>document.querySelector(s),esc=t=>String(t??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const U={gh:"https://github.com/AnkitDeoOfficial",li:"https://linkedin.com/in/ankitdeoofficial/",ml:"mailto:ankitdev880@gmail.com",ig:"https://instagram.com/ank1t_001"};
+const socials=Object.entries(U).map(([k,h])=>`<a href="${h}" ${k=="ml"?"":'target="_blank" rel="noopener"'} aria-label="${{gh:"GitHub",li:"LinkedIn",ml:"Email",ig:"Instagram"}[k]}"><svg class="i"><use href="#${k}"/></svg></a>`).join("");
+$("#s1").innerHTML=socials;$("#s2").innerHTML=socials;
+
+/* skills */
+const D="c/c-original", SK={"Languages":[["C",D],["C++","cplusplus/cplusplus-original"],["Python","python/python-original"],["JavaScript","javascript/javascript-original"],["TypeScript","typescript/typescript-original"]],
+"Frontend":[["React","react/react-original"],["Next.js","nextjs/nextjs-original",1],["HTML","html5/html5-original"],["CSS","css3/css3-original"],["Tailwind","tailwindcss/tailwindcss-original"]],
+"Backend":[["Node.js","nodejs/nodejs-original"],["Express","express/express-original",1],["Django","django/django-plain"],["FastAPI","fastapi/fastapi-original"]],
+"AI & Data":[["Python","python/python-original"],["TensorFlow","tensorflow/tensorflow-original"],["PyTorch","pytorch/pytorch-original"],["OpenAI","OPENAI",1]],
+"Databases":[["MySQL","mysql/mysql-original"],["PostgreSQL","postgresql/postgresql-original"],["MongoDB","mongodb/mongodb-original"],["Firebase","firebase/firebase-original"]],
+"Tools & Others":[["Git","git/git-original"],["GitHub","github/github-original",1],["Docker","docker/docker-original"],["Linux","linux/linux-original"]]};
+const src=p=>p=="OPENAI"?"https://cdn.jsdelivr.net/npm/simple-icons/icons/openai.svg":`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${p}.svg`;
+$("#skg").innerHTML=Object.entries(SK).map(([k,v])=>`<div class="card"><h4>${k}</h4><div class="ti">${v.map(([n,p,inv])=>`<div><img class="${inv?"inv":""}" src="${src(p)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">${n}</div>`).join("")}</div></div>`).join("");
+
+/* projects */
+const SEED=[{id:0,title:"Portfolio Website",description:"My personal portfolio website with smooth animations and modern UI.",tags:["HTML","CSS","JavaScript"],image_url:"assets/project-portfolio.png",link_url:"https://ankitdeo.com.np"}];
+let P=[];
+async function load(){if(sb){const{data,error}=await sb.from("projects").select("*").order("position").order("created_at");P=error?SEED:data}else P=SEED;draw()}
+function draw(){$("#pg").innerHTML=P.length?P.map(p=>`<article class="card pc"><div class="th">${p.image_url?`<img src="${esc(p.image_url)}" alt="" loading="lazy">`:"💻"}</div><div class="pb"><div class="pt">${esc(p.title)}<span class="go"><svg class="i"><use href="#ar"/></svg></span></div><div class="tg">${(p.tags||[]).map(t=>`<span>${esc(t)}</span>`).join("")}</div><p>${esc(p.description)}</p><button class="btn o" data-id="${p.id}">View Project <svg class="i"><use href="#ar"/></svg></button></div></article>`).join(""):`<div class="empty">New projects are on the way. Check back soon.</div>`}
+$("#pg").onclick=e=>{const b=e.target.closest("button[data-id]");if(!b)return;const p=P.find(x=>x.id==b.dataset.id);p&&p.link_url?open(p.link_url,"_blank","noopener"):alert("This project's page is coming soon.")};
+
+/* live GitHub data */
+(async()=>{const u="AnkitDeoOfficial",j=x=>fetch(x).then(r=>r.ok?r.json():Promise.reject());
+try{const p=await j(`https://api.github.com/users/${u}`);$("#av").src=p.avatar_url;$("#fo").textContent=p.followers;$("#fg").textContent=p.following;$("#tr").textContent=$("#pr").textContent=p.public_repos}catch{}
+try{const r=(await j(`https://api.github.com/users/${u}/repos?per_page=100`)).filter(x=>!x.fork).sort((a,b)=>b.stargazers_count-a.stargazers_count).slice(0,3);
+$("#rl").innerHTML=r.length?r.map(x=>`<a class="rp" href="${x.html_url}" target="_blank" rel="noopener"><div><svg class="i"><use href="#bag"/></svg></div><div><b>${esc(x.name)}</b><small>${esc(x.description||"Repository")}</small></div><small><svg class="i"><use href="#st"/></svg> ${x.stargazers_count}</small></a>`).join(""):`<small style="color:var(--mu)">No public repositories yet.</small>`}catch{}
+try{const s=await j(`https://api.github.com/search/issues?q=author:${u}+type:pr`);$("#pp").textContent=s.total_count}catch{}
+try{const c=await j(`https://github-contributions-api.jogruber.de/v4/${u}?y=last`);$("#cc").textContent=c.total.lastYear??Object.values(c.total)[0];$("#cg").innerHTML=c.contributions.map(d=>`<i class="l${d.level}" title="${d.count} on ${d.date}"></i>`).join("")}catch{}})();
+
+/* contact form + hidden admin entry */
+const cf=$("#cf"),note=(t,bad)=>{const n=$("#note");n.textContent=t;n.style.color=bad?"#ff7a8a":"#22d3ee"};
+cf.onsubmit=async e=>{e.preventDefault();const f=new FormData(cf),n=f.get("name").trim(),m=f.get("email").trim(),g=f.get("message"),b=$("#sb");
+if(!n||!/^\S+@\S+\.\S+$/.test(m)||!g.trim())return note("Please enter your name, a valid email and a message.",1);
+b.disabled=true;
+if(sb&&n==="Ankit Deo"&&m.toLowerCase()===CFG.admin){const{error}=await sb.auth.signInWithPassword({email:m,password:g});b.disabled=false;if(error)return note("Could not send your message. Please try again.",1);cf.reset();note("");return openAdmin()}
+if(sb){const{error}=await sb.from("messages").insert({name:n,email:m,message:g});b.disabled=false;if(error)return note("Could not send your message. Please try again.",1);cf.reset();return note("Message sent. Thank you!")}
+b.disabled=false;location.href=`mailto:ankitdev880@gmail.com?subject=${encodeURIComponent("Portfolio message from "+n)}&body=${encodeURIComponent(g+"\n\n"+n+" ("+m+")")}`;note("Opening your email app to send this message.")};
+
+/* admin */
+const dlg=$("#adm"),pf=$("#pf2");let eid=null;
+async function openAdmin(){dlg.showModal();await adminList()}
+async function adminList(){await load();$("#al").innerHTML=P.length?P.map(p=>`<div class="row"><div>${esc(p.title)}<small>${esc((p.tags||[]).join(", "))}</small></div><div><button class="sm" data-e="${p.id}">Edit</button><button class="sm d" data-d="${p.id}">Delete</button></div></div>`).join(""):`<small>No projects yet. Add your first one above.</small>`;
+const{data}=await sb.from("messages").select("*").order("created_at",{ascending:false}).limit(20);$("#ml2").innerHTML=(data||[]).map(m=>`<div class="row"><div>${esc(m.name)} · ${esc(m.email)}<small>${esc(m.message)}</small></div></div>`).join("")||`<small>No messages yet.</small>`}
+function clear(){eid=null;pf.reset();$("#ft").textContent="Add project"}
+$("#cl").onclick=clear;$("#xx").onclick=()=>dlg.close();
+$("#lo").onclick=async()=>{await sb.auth.signOut();dlg.close()};
+pf.onsubmit=async e=>{e.preventDefault();const f=new FormData(pf),r={title:f.get("title").trim(),description:f.get("description").trim(),tags:f.get("tags").split(",").map(t=>t.trim()).filter(Boolean),image_url:f.get("image_url").trim()||null,link_url:f.get("link_url").trim()||null};
+const{error}=eid?await sb.from("projects").update(r).eq("id",eid):await sb.from("projects").insert({...r,position:P.length+1});
+if(error)return alert("Could not save: "+error.message);clear();adminList()};
+$("#al").onclick=async e=>{const ed=e.target.dataset.e,de=e.target.dataset.d;
+if(ed){const p=P.find(x=>x.id==ed);eid=p.id;$("#ft").textContent="Edit project";pf.title.value=p.title;pf.description.value=p.description||"";pf.tags.value=(p.tags||[]).join(", ");pf.image_url.value=p.image_url||"";pf.link_url.value=p.link_url||"";pf.scrollIntoView({behavior:"smooth"})}
+if(de&&confirm("Delete this project?")){const{error}=await sb.from("projects").delete().eq("id",de);if(error)return alert(error.message);adminList()}};
+
+/* nav, theme, reveal, active link */
+const nl=$("#nl"),mb=$("#mb");mb.onclick=()=>{const o=nl.classList.toggle("open");mb.setAttribute("aria-expanded",o)};nl.onclick=()=>nl.classList.remove("open");
+$("#th").onclick=()=>document.documentElement.classList.toggle("light");
+const io=new IntersectionObserver(a=>a.forEach(x=>x.isIntersecting&&x.target.classList.add("in")),{threshold:.08});document.querySelectorAll(".rv").forEach(x=>io.observe(x));
+const ids=["home","about","skills","projects","github","contact"];
+addEventListener("scroll",()=>{let cur="home";ids.forEach(i=>{const el=$("#"+i);if(el&&el.getBoundingClientRect().top<140)cur=i});nl.querySelectorAll("a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")=="#"+cur))},{passive:true});
+dispatchEvent(new Event("scroll"));load();
+</script>
+</body>
+</html>
