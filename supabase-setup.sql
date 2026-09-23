@@ -1,4 +1,3 @@
--- Paste this whole file into Supabase > SQL Editor > New query, then press Run.
 
 create table if not exists projects (
   id uuid primary key default gen_random_uuid(),
