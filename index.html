@@ -195,8 +195,12 @@ dialog input,dialog textarea{width:100%;padding:9px 12px;border-radius:8px;borde
 <h4>Projects</h4><div id="al"></div><h4>Messages</h4><div id="ml2"></div></dialog>
 
 <script>
-/* ===== Supabase connection: paste your two values here (see README) ===== */
-const CFG={url:"",key:"",admin:"ankitdev880@gmail.com"};
+
+const CFG={
+  url:"https://evaktlmwqrfohhvbvpvh.supabase.co",
+  key:"sb_publishable_Gcj8KNbU7CAjFWfTLIvVMQ_Kn69ZJx-",
+  admin:"ankitdev880@gmail.com"
+};
 const sb=CFG.url&&CFG.key&&window.supabase?supabase.createClient(CFG.url,CFG.key):null;
 const $=s=>document.querySelector(s),esc=t=>String(t??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const U={gh:"https://github.com/AnkitDeoOfficial",li:"https://linkedin.com/in/ankitdeoofficial/",ml:"mailto:ankitdev880@gmail.com",ig:"https://instagram.com/ank1t_001"};
