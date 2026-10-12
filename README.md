@@ -2,4 +2,4 @@
 
 Personal portfolio.
 
-Built with plain HTML, CSS and JavaScript.
+Built with plain HTML.
