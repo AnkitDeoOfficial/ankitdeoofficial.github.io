@@ -113,6 +113,56 @@ dialog input,dialog textarea{width:100%;padding:9px 12px;border-radius:8px;borde
 .hg,.ab,.cg,.strip{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}.ci .soc{margin-left:0}}
 @media(max-width:560px){.abg{grid-template-columns:1fr}.abg img{max-width:220px}.g3,.sk,form{grid-template-columns:1fr}.wrap{padding:0 18px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+
+/* MONOCHROME THEME OVERRIDES */
+:root{
+  --bg:#050505; --tx:#f5f5f5; --mu:#a3a3a3;
+  --cy:#ffffff; --bl:#ffffff; --ln:rgba(255,255,255,.18);
+  --cd:linear-gradient(160deg,#171717,#090909);
+}
+:root.light{
+  --bg:#f7f7f7; --tx:#111111; --mu:#555555;
+  --cy:#111111; --bl:#111111; --ln:rgba(0,0,0,.18);
+  --cd:linear-gradient(160deg,#ffffff,#eeeeee);
+}
+header{background:rgba(5,5,5,.9);border-bottom-color:rgba(255,255,255,.12)}
+:root.light header{background:rgba(247,247,247,.92);border-bottom-color:rgba(0,0,0,.12)}
+.logo{background:linear-gradient(90deg,#fff,#a3a3a3);-webkit-background-clip:text;background-clip:text}
+.links a.on{color:var(--tx);border-color:var(--tx)}
+.ib{background:rgba(255,255,255,.04)}
+.hero{
+ background:radial-gradient(60% 80% at 75% 40%,rgba(255,255,255,.07),transparent 70%),
+ radial-gradient(40% 60% at 10% 20%,rgba(255,255,255,.035),transparent 70%)
+}
+.hello{background:rgba(255,255,255,.06);color:var(--tx);border-color:var(--ln)}
+.kick,h1 b{color:#fff;background:none;-webkit-text-fill-color:currentColor}
+:root.light .kick,:root.light h1 b{color:#111;-webkit-text-fill-color:currentColor}
+.hero p{color:var(--mu)}
+.btn{border-color:var(--tx)}
+.btn.p{background:#f5f5f5;color:#080808;border-color:#f5f5f5;box-shadow:none}
+:root.light .btn.p{background:#111;color:#fff;border-color:#111}
+.btn:hover{box-shadow:0 0 18px rgba(255,255,255,.12)}
+:root.light .btn:hover{box-shadow:0 0 18px rgba(0,0,0,.12)}
+.soc a:hover,.chip svg,.btn.o{color:var(--tx)}
+section,footer{border-color:var(--ln)}
+.lab{color:var(--tx)}
+.abg img{border-color:var(--ln);box-shadow:0 0 24px rgba(255,255,255,.08)}
+.pc:hover{border-color:var(--tx);box-shadow:0 0 24px rgba(255,255,255,.08)}
+.th{background:linear-gradient(135deg,#111,#444)}
+.tg span{background:rgba(255,255,255,.08);color:var(--mu)}
+#cg i{background:#1c1c1c}
+#cg .l1{background:#444}#cg .l2{background:#777}#cg .l3{background:#aaa}#cg .l4{background:#eee}
+.g3 h5 a{color:var(--tx)}
+.ac div:first-child,.rp div:first-child{background:rgba(255,255,255,.08);color:var(--tx)}
+.ci .bx{color:var(--tx)}
+.fl:focus-within{border-color:var(--tx);box-shadow:0 0 14px rgba(255,255,255,.1)}
+dialog{background:#101010;color:#fff;border-color:var(--ln)}
+dialog h4{color:#fff}
+dialog input,dialog textarea{background:#191919;color:#fff;border-color:#444}
+.sm.d{color:#d4d4d4}
+:root.light dialog{background:#fff;color:#111}
+:root.light dialog input,:root.light dialog textarea{background:#f5f5f5;color:#111}
+
 </style>
 </head>
 <body>
